@@ -17,35 +17,35 @@ const nav = [
     menu: [
       {
         url: "/category",
-        title: "On Sale",
+        title: "Camp",
       },
       {
         url: "/category",
-        title: "Featured",
+        title: "Gear",
       },
       {
         url: "/category",
-        title: "Masks",
+        title: "Outfits",
       },
       {
         url: "/category",
-        title: "Eye Care",
+        title: "Shoe",
       },
       {
         url: "/category",
-        title: "Moisturizers",
+        title: "Bag",
       },
       {
         url: "/category",
-        title: "Treatments",
+        title: "Electronics",
       },
       {
         url: "/category",
-        title: "Night Care",
+        title: "Knife",
       },
       {
         url: "/category",
-        title: "Sun Care",
+        title: "Underwater",
       },
     ],
   },

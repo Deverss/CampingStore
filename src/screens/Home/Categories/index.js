@@ -8,49 +8,44 @@ import styles from "./Categories.module.sass";
 const items = [
   {
     url: "/category",
-    title: "On Sale",
-    pic: "/images/categories/shopping-bag.svg",
+    title: "Camp",
+    pic: "/images/category-icons/Camp.webp",
   },
   {
     url: "/category",
-    title: "Featured",
-    pic: "/images/categories/trending.svg",
+    title: "Gear",
+    pic: "/images/category-icons/Gear.webp",
   },
   {
     url: "/category",
-    title: "Masks",
-    pic: "/images/categories/skincare.svg",
+    title: "Outfits",
+    pic: "/images/category-icons/Outfits.webp",
   },
   {
     url: "/category",
-    title: "Eye Care",
-    pic: "/images/categories/eye-care.svg",
+    title: "Shoe",
+    pic: "/images/category-icons/Shoe.webp",
   },
   {
     url: "/category",
-    title: "Moisturizers",
-    pic: "/images/categories/natural.svg",
+    title: "Bag",
+    pic: "/images/category-icons/Bag.webp",
   },
   {
     url: "/category",
-    title: "Treatments",
-    pic: "/images/categories/protection.svg",
+    title: "Electronics",
+    pic: "/images/category-icons/Electronics.webp",
   },
   {
     url: "/category",
-    title: "Night Care",
-    pic: "/images/categories/night-care.svg",
+    title: "Knife",
+    pic: "/images/category-icons/Knife.webp",
   },
   {
     url: "/category",
-    title: "Sun Care",
-    pic: "/images/categories/after-sun.svg",
-  },
-  {
-    url: "/category",
-    title: "On Sale",
-    pic: "/images/categories/shopping-bag.svg",
-  },
+    title: "Underwater",
+    pic: "/images/category-icons/Underwater.webp",
+  }
 ];
 
 function Categories() {

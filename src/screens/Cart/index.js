@@ -4,7 +4,7 @@ import styles from "./Cart.module.sass";
 import Breadcrumbs from "../../components/Breadcrumbs";
 import Items from "./Items";
 import Receipt from "./Receipt";
-import Newsletter from "../../components/Newsletter";
+
 
 const breadcrumbs = [
   {
@@ -46,9 +46,9 @@ function Cart() {
   const [items, setItems] = useState([
     {
       id: 1,
-      product: "Eye Mask Gel",
+      product: "Camping",
       link: "/product",
-      img: "/images/content/products/product-pic-4.png",
+      img: "/images/content/products/product-pic-4.webp",
       price: {
         actual: "$180",
         old: "$127",
@@ -57,9 +57,9 @@ function Cart() {
     },
     {
       id: 2,
-      product: "Day Eye Cream",
+      product: "Camping",
       link: "/product",
-      img: "/images/content/products/product-pic-6.png",
+      img: "/images/content/products/product-pic-6.webp",
       price: {
         actual: "$97",
       },
@@ -94,7 +94,7 @@ function Cart() {
           </div>
         </div>
       </div>
-      <Newsletter />
+      
     </>
   );
 }

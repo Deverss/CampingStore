@@ -18,30 +18,7 @@ const nav = [
         url: "/category",
         title: "Featured",
       },
-      {
-        url: "/category",
-        title: "Masks",
-      },
-      {
-        url: "/category",
-        title: "Eye Care",
-      },
-      {
-        url: "/category",
-        title: "Moisturizers",
-      },
-      {
-        url: "/category",
-        title: "Treatments",
-      },
-      {
-        url: "/category",
-        title: "Night Care",
-      },
-      {
-        url: "/category",
-        title: "Sun Care",
-      },
+      ,
     ],
   },
   {
@@ -50,10 +27,6 @@ const nav = [
       {
         url: "/legal-page",
         title: "Terms of Service",
-      },
-      {
-        url: "/legal-page",
-        title: "Privacy Policy",
       },
       {
         url: "/legal-page",
@@ -83,19 +56,7 @@ const nav = [
       {
         url: "/contacts",
         title: "Contact",
-      },
-      {
-        url: "/careers-page",
-        title: "Careers",
-      },
-      {
-        url: "/",
-        title: "Vision",
-      },
-      {
-        url: "/",
-        title: "Culture",
-      },
+      }
     ],
   },
 ];
@@ -111,7 +72,7 @@ const Footer = () => {
               <Image className={styles.logo_mobile} src="/images/logo-mobile.svg" srcDark="/images/logo-mobile-white.svg" />
             </Link>
 
-            <div className={styles.copyright}>© 2020 - All rights reserved</div>
+            <div className={styles.copyright}>© 2023 - All rights reserved</div>
             <SocialLinks position={"footer"} />
 
             <Theme />

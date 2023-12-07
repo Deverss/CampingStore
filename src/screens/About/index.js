@@ -1,7 +1,7 @@
 import React from "react";
 import cn from "classnames";
 import Breadcrumbs from "../../components/Breadcrumbs";
-import Newsletter from "../../components/Newsletter";
+
 import Values from "./Values";
 import styles from "./About.module.sass";
 
@@ -27,9 +27,9 @@ function About() {
       <div className={cn("section")}>
         <div className={cn("section", styles.wrap)}>
           <div className={cn("center")}>
-            <div className={cn("stage")}>- Learn More</div>
+            <div className={cn("stage")}>Learn More</div>
             <h2 className={cn("title title_mb-lg", styles.title)}>All About Us</h2>
-            <div className={styles.bg} style={{ backgroundImage: `url(/images/content/company/company-bg.jpg)` }}></div>
+            <div className={styles.bg} style={{ backgroundImage: `url(/images/content/company/company-bg.webp)` }}></div>
           </div>
         </div>
 
@@ -37,15 +37,15 @@ function About() {
           <div className={cn("center", styles.center)}>
             <div className={styles.row}>
               <div className={styles.col}>
-                <div className={cn("stage")}>- How it has Started</div>
+                <div className={cn("stage")}>How it has Started</div>
                 <h2 className={cn("title", styles.title)}>How and When it has All Started</h2>
-                <div className={styles.photo} style={{ backgroundImage: `url(/images/content/company/company-photo.jpg)` }}></div>
+                <div className={styles.photo} style={{ backgroundImage: `url(/images/content/company/company-photo.webp)` }}></div>
               </div>
               <div className={styles.col}>
                 <div className={styles.item}>
-                  <div className={styles.category}>Natural Ingredients Only</div>
+                  <div className={styles.category}>The Best Outdoor Stuff</div>
                   <div className={styles.text}>
-                    10 years ago, when one of the co-founders came up with the idea of making skincare and beauty products using only natural ingreadients, he did not even think twice.
+                  Camping is a great way to bond with your colleagues, enjoy nature, and have fun. Whether you are planning a team-building retreat, a corporate getaway, or a casual outing, you will need some camping equipment
                   </div>
                 </div>
                 <div className={styles.item}>
@@ -61,7 +61,7 @@ function About() {
         </div>
       </div>
       <Values />
-      <Newsletter />
+      
     </>
   );
 }

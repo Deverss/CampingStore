@@ -4,8 +4,6 @@ import cn from "classnames";
 import $ from "jquery";
 import styles from "./Product.module.sass";
 import Breadcrumbs from "../../components/Breadcrumbs";
-import Review from "../../components/Review";
-import Newsletter from "../../components/Newsletter";
 import Magnifier from "../../components/Magnifier";
 import Counter from "../../components/Counter";
 import Icon from "../../components/Icon";
@@ -24,26 +22,26 @@ const breadcrumbs = [
     url: "/category",
   },
   {
-    title: "Sun Cate",
+    title: "Product",
     url: "/product",
   },
   {
-    title: "Sun Cream 950 ml",
+    title: "Camping",
   },
 ];
 
 const pics = [
   {
-    url: "/images/content/product/card-pic-1.png",
-    large: "/images/content/product/card-pic-big-1.png",
+    url: "/images/content/product/card-pic-1.jpg",
+    large: "/images/content/product/card-pic-big-1.jpg",
   },
   {
-    url: "/images/content/product/card-pic-2.png",
-    large: "/images/content/product/card-pic-big-2.png",
+    url: "/images/content/product/card-pic-2.jpg",
+    large: "/images/content/product/card-pic-big-2.jpg",
   },
   {
-    url: "/images/content/product/card-pic-3.png",
-    large: "/images/content/product/card-pic-big-3.png",
+    url: "/images/content/product/card-pic-3.jpg",
+    large: "/images/content/product/card-pic-big-3.jpg",
   },
 ];
 
@@ -118,7 +116,7 @@ function Product() {
             </div>
             <div className={styles.col}>
               <div className={cn("stage", styles.stage)}>- Selling Fast</div>
-              <h1 className={cn("title", styles.title)}>Sun Cream</h1>
+              <h1 className={cn("title", styles.title)}>Camping</h1>
               <div className={styles.details}>
                 <div className={cn(product.category.color, styles.category)}>{product.category.title}</div>
                 <div className={styles.prices}>
@@ -145,9 +143,7 @@ function Product() {
       </div>
 
       <Details />
-      <Review stage="- Product Reviews" />
       <ProductsSlider items={products} />
-      <Newsletter />
     </>
   );
 }

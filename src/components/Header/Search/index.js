@@ -14,7 +14,7 @@ const Search = ({ position }) => {
   return (
     <form className={cn(styles.search, { [styles.show]: visibleSearch && position === "header", [styles.nav_search]: position === "menu" })} action="" onSubmit={(e) => handleSubmit(e)}>
       <div className="wrap">
-        <input className={styles.input} type="text" placeholder="Eye care products for tired eyes" value={search} onChange={(e) => setSearch(e.target.value)} />
+        <input className={styles.input} type="text" placeholder="Camping products for Outdoor" value={search} onChange={(e) => setSearch(e.target.value)} />
       </div>
       <button
         className={styles.button}

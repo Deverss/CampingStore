@@ -3,9 +3,7 @@ import Main from "./Main";
 import Categories from "./Categories";
 import Products from "./Products";
 import About from "./About";
-import Review from "../../components/Review";
 import Blog from "./Blog";
-import Newsletter from "../../components/Newsletter";
 
 function Home() {
   return (
@@ -14,9 +12,7 @@ function Home() {
       <Categories />
       <Products />
       <About />
-      <Review stage="- Our Reviews" />
       <Blog />
-      <Newsletter />
     </>
   );
 }

@@ -5,7 +5,6 @@ import styles from "./Search.module.sass";
 import Filters from "../../components/Filters";
 import DropdownMultiple from "../../components/DropdownMultiple";
 import ProductItem from "../../components/ProductItem";
-import Newsletter from "../../components/Newsletter";
 
 import { products } from "../../mocks/products";
 
@@ -43,8 +42,8 @@ function Search() {
         <div className={cn("center")}>
           <div className={cn("stage")}>- Search Results</div>
           <h2 className={cn("title title_mb-md")}>
-            Eye Care Products for <br />
-            Tired Eyes
+            Camping Products for <br />
+            Outdoor
           </h2>
 
           <div className={styles.result}>
@@ -64,7 +63,6 @@ function Search() {
           </div>
         </div>
       </div>
-      <Newsletter />
     </>
   );
 }

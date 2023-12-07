@@ -1,9 +1,9 @@
 export const basket = [
     {
       id: 1,
-      product: "Eye Mask Gel",
+      product: "Camping",
       url: "/product",
-      img: "/images/content/products/product-pic-4.png",
+      img: "/images/content/products/product-pic-4.webp",
       sku: "123456789",
       price: {
         actual: "$180",
@@ -12,9 +12,9 @@ export const basket = [
     },
     {
       id: 2,
-      product: "Day Eye Cream",
+      product: "Camping",
       url: "/product",
-      img: "/images/content/products/product-pic-6.png",
+      img: "/images/content/products/product-pic-6.webp",
       sku: "123456789",
       price: {
         actual: "$97",
@@ -25,11 +25,11 @@ export const basket = [
     {
       id: "1",
       url: "/product",
-      product: "Sun Cream",
+      product: "Camping",
       img: "/images/content/products/product-pic-1.png",
       sku: "123456789",
       category: {
-        title: "Sun care",
+        title: "Underwater",
         color: "yellow",
       },
       sale: "20%",
@@ -41,11 +41,11 @@ export const basket = [
     {
       id: "2",
       url: "/product",
-      product: "Night Eye Cream",
-      img: "/images/content/products/product-pic-2.png",
+      product: "Camping",
+      img: "/images/content/products/product-pic-2.webp",
       sku: "123456789",
       category: {
-        title: "Eye care",
+        title: "Underwater",
         color: "blue",
       },
       price: {
@@ -56,11 +56,11 @@ export const basket = [
     {
       id: "3",
       url: "/product",
-      product: "Acne Skin Gel",
+      product: "Camping",
       img: "/images/content/products/product-pic-3.png",
       sku: "123456789",
       category: {
-        title: "Treatments",
+        title: "Bag",
         color: "pink",
       },
       newest: true,
@@ -72,11 +72,11 @@ export const basket = [
     {
       id: "4",
       url: "/product",
-      product: "Anti Dry Skin",
-      img: "/images/content/products/product-pic-4.png",
+      product: "Camping",
+      img: "/images/content/products/product-pic-4.webp",
       sku: "123456789",
       category: {
-        title: "Moisturizers",
+        title: "Electronics",
         color: "green",
       },
       price: {
@@ -87,11 +87,11 @@ export const basket = [
     {
       id: "5",
       url: "/product",
-      product: "Body Protection",
-      img: "/images/content/products/product-pic-5.png",
+      product: "Camping",
+      img: "/images/content/products/product-pic-5.jpg",
       sku: "123456789",
       category: {
-        title: "Treatments",
+        title: "Knife",
         color: "yellow",
       },
       newest: true,
@@ -103,11 +103,11 @@ export const basket = [
     {
       id: "6",
       url: "/product",
-      product: "Deep Treatment",
-      img: "/images/content/products/product-pic-6.png",
+      product: "Camping",
+      img: "/images/content/products/product-pic-6.webp",
       sku: "123456789",
       category: {
-        title: "On sale",
+        title: "Outfits",
         color: "pink",
       },
       newest: true,
@@ -119,11 +119,11 @@ export const basket = [
     {
       id: "7",
       url: "/product",
-      product: "All In One Gel",
-      img: "/images/content/products/product-pic-7.png",
+      product: "Camping",
+      img: "/images/content/products/product-pic-7.jpg",
       sku: "123456789",
       category: {
-        title: "Featured",
+        title: "Gear",
         color: "blue",
       },
       price: {
@@ -134,11 +134,11 @@ export const basket = [
     {
       id: "8",
       url: "/product",
-      product: "Morning Shine",
+      product: "Camping",
       img: "/images/content/products/product-pic-8.png",
       sku: "123456789",
       category: {
-        title: "Night care",
+        title: "Gear",
         color: "green",
       },
       newest: true,

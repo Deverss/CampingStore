@@ -9,14 +9,14 @@ function Main() {
       <div className={cn("center")}>
         <div className={styles.container}>
           <div className={styles.details}>
-            <div className={cn("stage", styles.stage)}> - Skincare Products</div>
-            <h1 className={cn("title", styles.title)}>We Offer the Best Products for your Skin</h1>
+            <div className={cn("stage", styles.stage)}>Camping Products</div>
+            <h1 className={cn("title", styles.title)}>Camping experience Great similar to LPL</h1>
             <Link className={cn("button button-green")} to="/">
               Shop Now
             </Link>
           </div>
           <div className={styles.preview}>
-            <img className={styles.pic} src="/images/main-pic.png" alt="" />
+            <img className={styles.pic} src="/images/main-pic.svg" alt="" />
           </div>
         </div>
       </div>

@@ -5,7 +5,6 @@ import Breadcrumbs from "../../components/Breadcrumbs";
 import DropdownBox from "../../components/DropdownBox";
 import DropdownSelect from "../../components/DropdownSelect";
 import Filters from "../../components/Filters";
-import Newsletter from "../../components/Newsletter";
 
 const breadcrumbs = [
   {
@@ -132,7 +131,7 @@ function Faq() {
           </div>
         </div>
       </div>
-      <Newsletter />
+  
     </>
   );
 }

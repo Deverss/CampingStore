@@ -4,7 +4,6 @@ import TextInput from "../../components/TextInput";
 import TextArea from "../../components/TextArea";
 import DropdownSelect from "../../components/DropdownSelect";
 import Breadcrumbs from "../../components/Breadcrumbs";
-import Newsletter from "../../components/Newsletter";
 import styles from "./Contacts.module.sass";
 
 const breadcrumbs = [
@@ -24,19 +23,19 @@ const breadcrumbs = [
 const items = [
   {
     category: "Customer Services",
-    text: 'Please send us an email at <a href="mailto:customercare@hygge.com">customercare@hygge.com</a>',
+    text: 'Please send us an email at <a href="#">customercare@lplcamping.example</a>',
   },
   {
     category: "Public Relations",
-    text: 'You can contact our media team by sending them an email at <a href="mailto:media@hygge.com">media@hygge.com</a>',
+    text: 'You can contact our media team by sending them an email at <a href="#">mediae@lplcamping.example</a>',
   },
   {
     category: "Large Orders",
-    text: 'If you are thinking of making a very large order, plese feel free to contact us at <a href="mailto:sales@hygge.com">sales@hygge.com</a> and we will give you a special discount',
+    text: 'If you are thinking of making a very large order, plese feel free to contact us at <a href="#">salese@lplcamping.example</a> and we will give you a special discount',
   },
   {
     category: "Other Enquiries",
-    text: 'For all of your other questions, please send us an email at <a href="mailto:general@hygge.com">general@hygge.com</a>',
+    text: 'For all of your other questions, please send us an email at <a href="#">generale@lplcamping.example</a>',
   },
 ];
 
@@ -84,7 +83,6 @@ function Contacts() {
           </div>
         </div>
       </div>
-      <Newsletter />
     </>
   );
 }

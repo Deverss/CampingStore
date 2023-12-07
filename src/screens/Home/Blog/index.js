@@ -9,7 +9,7 @@ const posts = [
   {
     title: "Morning Skincare Routine: 10 Top Tips for you",
     url: "/blog",
-    img: "/images/content/blog/blog-pic-1.jpg",
+    img: "/images/content/blog/blog-pic-1.webp",
     status: "recent",
     category: {
       title: "Top tips",
@@ -20,7 +20,7 @@ const posts = [
   {
     title: "New Collection is Out",
     url: "/blog",
-    img: "/images/content/blog/blog-pic-2.jpg",
+    img: "/images/content/blog/blog-pic-2.webp",
     category: {
       title: "New in",
       color: "blue",
@@ -30,7 +30,7 @@ const posts = [
   {
     title: "Always Stay Fresh",
     url: "/blog",
-    img: "/images/content/blog/blog-pic-3.jpg",
+    img: "/images/content/blog/blog-pic-3.webp",
     status: "popular",
     category: {
       title: "How to",
@@ -41,7 +41,7 @@ const posts = [
   {
     title: "Improve your Skin now",
     url: "/blog",
-    img: "/images/content/blog/blog-pic-4.jpg",
+    img: "/images/content/blog/blog-pic-4.webp",
     category: {
       title: "Masks",
       color: "green",
@@ -51,7 +51,7 @@ const posts = [
   {
     title: "Stay Safe in the Sun",
     url: "/blog",
-    img: "/images/content/blog/blog-pic-5.jpg",
+    img: "/images/content/blog/blog-pic-5.webp",
     category: {
       title: "Sun care",
       color: "yellow",
@@ -61,7 +61,7 @@ const posts = [
   {
     title: "Explore our Bestselling Products",
     url: "/blog",
-    img: "/images/content/blog/blog-pic-6.jpg",
+    img: "/images/content/blog/blog-pic-6.webp",
     category: {
       title: "Bestsellers",
       color: "blue",
@@ -71,7 +71,7 @@ const posts = [
   {
     title: "5 Great Tips to Get that Perfect Skin",
     url: "/blog",
-    img: "/images/content/blog/blog-pic-7.jpg",
+    img: "/images/content/blog/blog-pic-7.webp",
     category: {
       title: "Top tips",
       color: "pink",

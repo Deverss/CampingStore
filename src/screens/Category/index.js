@@ -5,7 +5,6 @@ import styles from "./Category.module.sass";
 import Filters from "../../components/Filters";
 import DropdownMultiple from "../../components/DropdownMultiple";
 import ProductItem from "../../components/ProductItem";
-import Newsletter from "../../components/Newsletter";
 
 import { products } from "../../mocks/products";
 
@@ -19,12 +18,12 @@ const breadcrumbs = [
     url: "/category",
   },
   {
-    title: "Eye Care",
+    title: "All",
   },
 ];
 
 const colorOptions = ["Red", "Green", "Blue", "Black"];
-const categoryOptions = ["Treatments", "Moisturizers", "Featured"];
+const categoryOptions = ["ALLROUNDER", "AQUAMIRA", "BARBECOOK", "BLACKDOG", "CADAC", "CARSON", "CHAR-BROIL", "CLIMBING TECH", "COGHLANS"];
 const priceOptions = ["$0 - $10", "$10 - $50", "$50 +"];
 
 function Category() {
@@ -42,15 +41,15 @@ function Category() {
       <Breadcrumbs value={breadcrumbs} />
       <div className={cn("section", styles.category)}>
         <div className={cn("center")}>
-          <div className={cn("stage")}>- Eye Care Products</div>
+          <div className={cn("stage")}>- Camping Products</div>
           <h2 className={cn("title title_mb-lg")}>
-            Explore the Eye Care <br />
+            Explore the Camping <br />
             Products
           </h2>
 
           <Filters tags={tags} setTags={setTags}>
             <DropdownMultiple title="Color" value={color} setValue={setColor} options={colorOptions} />
-            <DropdownMultiple title="Category" value={category} setValue={setCategory} options={categoryOptions} />
+            <DropdownMultiple title="Brands" value={category} setValue={setCategory} options={categoryOptions} />
             <DropdownMultiple title="Price Range" value={price} setValue={setPrice} options={priceOptions} />
           </Filters>
 
@@ -61,7 +60,7 @@ function Category() {
           </div>
         </div>
       </div>
-      <Newsletter />
+      
     </>
   );
 }
