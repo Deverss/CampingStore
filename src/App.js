@@ -9,6 +9,7 @@ import Category from "./screens/Category";
 import Checkout from "./screens/Checkout";
 import Contacts from "./screens/Contacts";
 import Faq from "./screens/Faq";
+import Games from "./screens/Games";
 import Home from "./screens/Home";
 import LegalPage from "./screens/LegalPage";
 import Login from "./screens/Login";
@@ -157,6 +158,16 @@ function App() {
             </Page>
           )}
         ></Route>
+        <Route 
+          exact
+          path="/games"
+          render={() => (
+            <Page>
+              <Games />
+            </Page>
+          )}>
+
+        </Route>
         <Route
           render={() => (
             <Page>

@@ -9,6 +9,7 @@ import Image from "../Image";
 const nav = [
   {
     category: "Categories",
+    // eslint-disable-next-line no-sparse-arrays
     menu: [
       {
         url: "/category",

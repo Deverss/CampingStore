@@ -61,6 +61,10 @@ const nav = [
     url: "/contacts",
     title: "Contact",
   },
+  {
+    url: "/games",
+    title: "Games",
+  }
 ];
 
 const Menu = ({ value, onChange }) => {
