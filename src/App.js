@@ -18,6 +18,8 @@ import Search from "./screens/Search";
 import SignUp from "./screens/SignUp";
 import Sitemap from "./screens/Sitemap";
 import CheckOtp from "./screens/CheckOtp";
+import BlogPage from "./screens/Blog";
+import PostDetail from "./screens/PostDetail";
 
 function App() {
   return (
@@ -38,6 +40,24 @@ function App() {
           render={() => (
             <Page>
               <About />
+            </Page>
+          )}
+        ></Route>
+        <Route
+          exact
+          path="/blog"
+          render={() => (
+            <Page>
+              <BlogPage />
+            </Page>
+          )}
+        ></Route>
+        <Route
+          exact
+          path="/postdetail"
+          render={() => (
+            <Page>
+              <PostDetail />
             </Page>
           )}
         ></Route>

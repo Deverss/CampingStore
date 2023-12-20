@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import cn from "classnames";
 import $ from "jquery";
 import "slick-slider";
-import styles from "./Blog.module.sass";
+import styles from "./Posts.module.sass";
 
 const posts = [
   {
@@ -80,7 +80,7 @@ const posts = [
   },
 ];
 
-function Blog() {
+function Posts() {
   const slider = useRef();
 
   const settings = {
@@ -117,9 +117,7 @@ function Blog() {
 
   return (
     <div className={cn("section", styles.blog)}>
-      <div className={cn("center", styles.center)}>
-        <div className={cn("stage", styles.stage)}> - Our Blog</div>
-        <h2 className={cn("title title_mb-lg", styles.title)}>Check Out our Blog</h2>
+      <div>
 
         <div ref={slider} className={cn("slider-blog", styles.slider, styles.list)}>
           {posts.map((x, i) => (
@@ -140,4 +138,4 @@ function Blog() {
   );
 }
 
-export default Blog;
+export default Posts;
