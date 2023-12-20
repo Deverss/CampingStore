@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import cn from "classnames";
 import styles from "./Cart.module.sass";
 import Breadcrumbs from "../../components/Breadcrumbs";
 import Items from "./Items";
 import Receipt from "./Receipt";
 import Newsletter from "../../components/Newsletter";
-
+import { useDispatch, useSelector } from "react-redux";
+import { cartAction } from "../../redux/cart";
 const breadcrumbs = [
   {
     title: "Home Page",
@@ -43,30 +44,18 @@ const receipt = {
 };
 
 function Cart() {
-  const [items, setItems] = useState([
-    {
-      id: 1,
-      product: "Eye Mask Gel",
-      link: "/product",
-      img: "/images/content/products/product-pic-4.png",
-      price: {
-        actual: "$180",
-        old: "$127",
-      },
-      count: 2,
-    },
-    {
-      id: 2,
-      product: "Day Eye Cream",
-      link: "/product",
-      img: "/images/content/products/product-pic-6.png",
-      price: {
-        actual: "$97",
-      },
-      count: 1,
-    },
-  ]);
+  const dispatch = useDispatch();
 
+  useEffect(() => {
+    const getProductCart = async () => {
+      dispatch(cartAction.getAllProductCart());
+    };
+
+    getProductCart();
+  }, [dispatch]);
+
+  const { products } = useSelector((state) => state.cart);
+  const [items, setItems] = useState(products);
   const handlerItems = (items) => setItems(items);
 
   return (
@@ -89,7 +78,7 @@ function Cart() {
               </div>
             </div>
             <div className={styles.col}>
-              <Receipt value={receipt} />
+              <Receipt value={products} />
             </div>
           </div>
         </div>

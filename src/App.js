@@ -42,7 +42,7 @@ function App() {
         ></Route>
         <Route
           exact
-          path="/category"
+          path="/category/:name"
           render={() => (
             <Page>
               <Category />
@@ -114,7 +114,7 @@ function App() {
         ></Route>
         <Route
           exact
-          path="/product"
+          path="/product/:id"
           render={() => (
             <Page>
               <Product />

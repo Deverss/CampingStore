@@ -7,29 +7,59 @@ import Search from "./Search";
 import Menu from "./Menu";
 import Icon from "../Icon";
 import Image from "../Image";
-
-import { basket } from "../../mocks/products";
-
+import { useDispatch, useSelector } from "react-redux";
+import { cartAction } from "../../redux/cart";
 const Header = () => {
   const [visibleNav, setVisibleNav] = useState(false);
   const [activeCart, setActiveCart] = useState(false);
-  const [basketItems, setBasketItems] = useState(basket);
 
+  const dispatch = useDispatch();
   const handleClick = () => setVisibleNav(false);
+  useEffect(() => {
+    const getProductCart = async () => {
+      dispatch(cartAction.getAllProductCart());
+    };
+
+    getProductCart();
+  }, [dispatch]);
+
+  const { products } = useSelector((state) => state.cart);
 
   useEffect(() => {
-    visibleNav ? document.body.classList.add("no-scroll") : document.body.classList.remove("no-scroll");
-    basketItems.length ? setActiveCart(true) : setActiveCart(false);
-  }, [visibleNav, basketItems]);
+    // Update basketItems when products change
+    setBasketItems(products);
+    // Update activeCart based on the presence of products
+    setActiveCart(products.length > 0);
+    visibleNav
+      ? document.body.classList.add("no-scroll")
+      : document.body.classList.remove("no-scroll");
+    products.length ? setActiveCart(true) : setActiveCart(false);
+  }, [visibleNav, products]);
+
+  const [basketItems, setBasketItems] = useState(products);
+  useEffect(() => {
+    setBasketItems(products);
+  }, [products]);
 
   return (
     <header className={styles.header}>
       <div className={cn("center", styles.container)}>
-        <button className={cn(styles.burger, { [styles.active]: visibleNav })} onClick={() => setVisibleNav(!visibleNav)}></button>
+        <button
+          className={cn(styles.burger, { [styles.active]: visibleNav })}
+          onClick={() => setVisibleNav(!visibleNav)}
+        ></button>
 
         <Link className={styles.logo} to="/" onClick={handleClick}>
-          <Image className={styles.logo_desktop} src="/images/logo.svg" srcDark="/images/logo-white.svg" />
-          <Image className={styles.logo_mobile} src="/images/logo-mobile.svg" srcDark="/images/logo-mobile-white.svg" />
+          <Image
+            className={styles.logo_desktop}
+            src="/images/logo.svg"
+            srcDark="/images/logo-white.svg"
+          />
+          <Image
+            className={styles.logo_mobile}
+            src="/images/logo-mobile.svg"
+            srcDark="/images/logo-mobile-white.svg"
+          />
         </Link>
 
         <div className={styles.control}>
@@ -37,10 +67,19 @@ const Header = () => {
             <Search position={"header"} />
           </div>
           <div className={styles.item}>
-            <Link className={cn({ [styles.active]: activeCart })} to="/cart" onClick={handleClick}>
+            <Link
+              className={cn({ [styles.active]: activeCart })}
+              to="/cart"
+              onClick={handleClick}
+            >
               <Icon className={cn("icon-cart icon-header")} name="cart" />
             </Link>
-            <Basket className={cn({ [styles.visible]: activeCart }, styles.basket)} value={basketItems} setValue={setBasketItems} />
+
+            <Basket
+              className={cn({ [styles.visible]: activeCart }, styles.basket)}
+              value={basketItems}
+              setValue={setBasketItems}
+            />
           </div>
           <div className={cn(styles.item, styles.hidden)}>
             <Link to="/login" onClick={handleClick}>

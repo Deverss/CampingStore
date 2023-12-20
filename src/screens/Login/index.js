@@ -6,7 +6,7 @@ import Breadcrumbs from "../../components/Breadcrumbs";
 import TextInput from "../../components/TextInput";
 import Checkbox from "../../components/Checkbox";
 import { useDispatch, useSelector } from "react-redux";
-import { AuthAction } from "../../redux/auth/index";
+import { AuthAction, loginSuccess } from "../../redux/auth/index";
 
 const breadcrumbs = [
   {
@@ -40,14 +40,18 @@ function Login() {
   const onLogin = (e) => {
     e.preventDefault();
     const res = dispatch(AuthAction.login({ email, password }));
-    res.then(result=>{
-      if(AuthAction.login.fulfilled.match(result)){
-        history.push("/")
+    res.then((result) => {
+      if (AuthAction.login.fulfilled.match(result)) {
+        dispatch(
+          loginSuccess({
+            userId: result.payload.userId,
+            accessToken: result.payload.accessToken,
+          })
+        );
+        window.location.href = "/";
       }
-    })
-    
+    });
   };
-
   return (
     <>
       <Breadcrumbs value={breadcrumbs} />

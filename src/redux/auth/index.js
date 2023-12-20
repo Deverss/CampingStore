@@ -5,16 +5,24 @@ const initialState = {
   user: null,
   isLoading: false,
   error: null,
-  email:null,
-  message:null,
-  errorVerifyOtp:null,
+  email: null,
+  message: null,
+  errorVerifyOtp: null,
+  errorLogout: null,
+  userId: null,
 };
 
 const login = createAsyncThunk("user/login", async (data) => {
   try {
     const res = await authApi.login(data);
-    localStorage.setItem("user", JSON.stringify(res.data.status.elements.accessToken)); // Fixed typo in "accessToken"
-    return res; // Fixed typo in "accessToken"
+    const accessToken = res.data.status.elements.accessToken;
+    const refreshToken = res.data.status.elements.refreshToken;
+    const userId = res.data.status.elements.userId;
+
+    localStorage.setItem("accessToken", accessToken);
+    localStorage.setItem("token", JSON.stringify(refreshToken));
+    localStorage.setItem("userId", JSON.stringify(userId));
+    return { accessToken, refreshToken, userId, };
   } catch (error) {
     throw new Error(error);
   }
@@ -38,6 +46,17 @@ const verifyOtp = createAsyncThunk("user/register/verifyOtp", async (data) => {
   }
 });
 
+const logout = createAsyncThunk("user/logout", async (data) => {
+  try {
+    const res = await authApi.logout(data);
+    localStorage.removeItem("user");
+    localStorage.removeItem("token");
+    return res;
+  } catch (error) {
+    throw new Error(error);
+  }
+});
+
 const authSlice = createSlice({
   name: "user",
   initialState,
@@ -45,6 +64,9 @@ const authSlice = createSlice({
     registrationSuccess: (state, action) => {
       state.email = action.payload.email;
       state.message = action.payload.message;
+    },
+    loginSuccess: (state, action) => {
+      state.userId = action.payload.userId;
     },
   }, // Added an empty 'reducers' field
   extraReducers: (builder) => {
@@ -62,7 +84,7 @@ const authSlice = createSlice({
       .addCase(login.rejected, (state, action) => {
         state.isLoading = false;
         state.user = null;
-        if(action.error.message){
+        if (action.error.message) {
           state.error = "Email or password incorrect!";
         }
       });
@@ -76,10 +98,9 @@ const authSlice = createSlice({
     });
     builder.addCase(register.rejected, (state, action) => {
       state.isLoading = false;
-      if(action.error.message){
+      if (action.error.message) {
         state.error = "Email ready exist!";
       }
-     
     });
 
     //verify Otp
@@ -92,8 +113,22 @@ const authSlice = createSlice({
     });
     builder.addCase(verifyOtp.rejected, (state, action) => {
       state.isLoading = false;
-      if(action.error.message){
+      if (action.error.message) {
         state.errorVerifyOtp = "Otp incorrect";
+      }
+    });
+
+    //logout
+    builder.addCase(logout.pending, (state) => {
+      state.isLoading = true;
+    });
+    builder.addCase(logout.fulfilled, (state, action) => {
+      state.isLoading = false;
+    });
+    builder.addCase(logout.rejected, (state, action) => {
+      state.isLoading = false;
+      if (action.error.message) {
+        state.errorLogout = "error logout";
       }
     });
   },
@@ -101,9 +136,11 @@ const authSlice = createSlice({
 
 export const selectLogin = (state) => state.user;
 export const { registrationSuccess } = authSlice.actions;
+export const { loginSuccess } = authSlice.actions;
 export const AuthAction = {
   login,
   register,
-  verifyOtp
+  verifyOtp,
+  logout,
 };
 export default authSlice.reducer;

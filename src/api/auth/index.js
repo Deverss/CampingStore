@@ -18,7 +18,9 @@ const AuthApi = {
       PASSWORD: data.password,
     });
   },
-  logout() {},
+  logout(data) {
+    return axiosInstance.delete("auth/logout", { refreshToken: data });
+  },
 };
 
 export default AuthApi;

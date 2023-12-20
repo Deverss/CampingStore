@@ -1,23 +1,25 @@
-import axios from 'axios';
+import axios from "axios";
 
-export const BASE_URL = 'https://ecommerce-camping.onrender.com/api/';
+export const BASE_URL = "https://ecommerce-camping.onrender.com/api/";
 
 const axiosInstance = axios.create({
   baseURL: BASE_URL,
   headers: {
-    'Content-Type': 'application/json',
+    "Content-Type": "application/json",
   },
 });
 
 // Add a request interceptor
 axiosInstance.interceptors.request.use(
   function (config) {
+    config.headers['Authorization'] =
+      'Bearer ' + localStorage.getItem('accessToken');
     return config;
   },
   function (error) {
-    console.log(error)
+    console.log(error);
     return Promise.reject(error);
-  },
+  }
 );
 
 axiosInstance.interceptors.response.use(
@@ -25,9 +27,9 @@ axiosInstance.interceptors.response.use(
     return response;
   },
   function (error) {
-    console.log(error)
+    console.log(error);
     return Promise.reject(error);
-  },
+  }
 );
 
 export default axiosInstance;

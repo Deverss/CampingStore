@@ -6,9 +6,7 @@ import Filters from "../../components/Filters";
 import DropdownMultiple from "../../components/DropdownMultiple";
 import ProductItem from "../../components/ProductItem";
 import Newsletter from "../../components/Newsletter";
-
-import { products } from "../../mocks/products";
-
+import { useDispatch, useSelector } from "react-redux";
 const breadcrumbs = [
   {
     title: "Home Page",
@@ -32,26 +30,40 @@ function Category() {
   const [category, setCategory] = useState([]);
   const [price, setPrice] = useState([]);
   const [tags, setTags] = useState([]);
-
+  const dispatch = useDispatch();
   useEffect(() => {
     setTags([...color, ...category, ...price]);
   }, [color, category, price]);
-
+  const { products } = useSelector((state) => state.category);
   return (
     <>
       <Breadcrumbs value={breadcrumbs} />
       <div className={cn("section", styles.category)}>
         <div className={cn("center")}>
-          <div className={cn("stage")}>- Eye Care Products</div>
+          <div className={cn("stage")}>- Category Products</div>
           <h2 className={cn("title title_mb-lg")}>
-            Explore the Eye Care <br />
-            Products
+            {products.TITLE} <br />
           </h2>
 
           <Filters tags={tags} setTags={setTags}>
-            <DropdownMultiple title="Color" value={color} setValue={setColor} options={colorOptions} />
-            <DropdownMultiple title="Category" value={category} setValue={setCategory} options={categoryOptions} />
-            <DropdownMultiple title="Price Range" value={price} setValue={setPrice} options={priceOptions} />
+            <DropdownMultiple
+              title="Color"
+              value={color}
+              setValue={setColor}
+              options={colorOptions}
+            />
+            <DropdownMultiple
+              title="Category"
+              value={category}
+              setValue={setCategory}
+              options={categoryOptions}
+            />
+            <DropdownMultiple
+              title="Price Range"
+              value={price}
+              setValue={setPrice}
+              options={priceOptions}
+            />
           </Filters>
 
           <div className={styles.list}>
