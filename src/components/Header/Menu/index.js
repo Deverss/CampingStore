@@ -77,12 +77,12 @@ const Menu = ({ value, onChange }) => {
     onChange(false);
     setVisibleSubMenu(false);
     dispatch(categoryAction.getProductOfCategory(id));
-   
   };
   const handleLogout = () => {
     const refreshToken = localStorage.getItem("token");
-    const res = dispatch(AuthAction.logout(refreshToken));
-    res.then((res) => console.log("a", res));
+    const res = dispatch(AuthAction.logout({ refreshToken }));
+    window.location.href = "/login";
+    
   };
   useEffect(() => {
     dispatch(categoryAction.getAllCategory());

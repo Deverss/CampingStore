@@ -18,7 +18,7 @@ function Products() {
   }, [dispatch]);
 
   const product = useSelector((state) => state.product);
-
+  
   return (
     <div className={cn("section", styles.main)}>
       <div className={cn("center")}>

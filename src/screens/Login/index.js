@@ -105,7 +105,7 @@ function Login() {
                   </Link>
                 </div>
                 <div className={styles.col}>
-                  <Link className={styles.link} to="#">
+                  <Link className={styles.link} to="/forgetPassword">
                     Forgot Password?
                   </Link>
                 </div>

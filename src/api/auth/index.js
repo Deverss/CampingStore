@@ -19,7 +19,18 @@ const AuthApi = {
     });
   },
   logout(data) {
-    return axiosInstance.delete("auth/logout", { refreshToken: data });
+    return axiosInstance.post("auth/logout", {
+      refreshToken: data.refreshToken,
+    });
+  },
+  forgetPassword(data) {
+    return axiosInstance.patch("auth/forgetPassword", { email: data.email });
+  },
+  resetPassword(data) {
+    console.log("data", data);
+    return axiosInstance.patch(`auth/resetPassword/${data.token}`, {
+      newPassword: data.password,
+    });
   },
 };
 

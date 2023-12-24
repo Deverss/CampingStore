@@ -17,7 +17,10 @@ import Search from "./screens/Search";
 import SignUp from "./screens/SignUp";
 import Sitemap from "./screens/Sitemap";
 import CheckOtp from "./screens/CheckOtp";
-
+import ForgetPassword from "./screens/forgetPassword";
+import ResetPassword from "./screens/resetPassword";
+import BlogPage from "./screens/Blog";
+import BlogDetail from "./screens/BlogDetail";
 function App() {
   return (
     <Router>
@@ -37,6 +40,24 @@ function App() {
           render={() => (
             <Page>
               <About />
+            </Page>
+          )}
+        ></Route>
+        <Route
+          exact
+          path="/blog"
+          render={() => (
+            <Page>
+              <BlogPage />
+            </Page>
+          )}
+        ></Route>
+        <Route
+          exact
+          path="/blogdetail"
+          render={() => (
+            <Page>
+              <BlogDetail />
             </Page>
           )}
         ></Route>
@@ -109,6 +130,24 @@ function App() {
           render={() => (
             <Page>
               <Login />
+            </Page>
+          )}
+        ></Route>
+        <Route
+          exact
+          path="/forgetPassword"
+          render={() => (
+            <Page>
+              <ForgetPassword />
+            </Page>
+          )}
+        ></Route>
+        <Route
+          exact
+          path="/resetPassword/:token"
+          render={() => (
+            <Page>
+              <ResetPassword />
             </Page>
           )}
         ></Route>

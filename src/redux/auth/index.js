@@ -10,6 +10,8 @@ const initialState = {
   errorVerifyOtp: null,
   errorLogout: null,
   userId: null,
+  messageSuccessForgetPassword: null,
+  errorForgetPassword: null,
 };
 
 const login = createAsyncThunk("user/login", async (data) => {
@@ -20,9 +22,9 @@ const login = createAsyncThunk("user/login", async (data) => {
     const userId = res.data.status.elements.userId;
 
     localStorage.setItem("accessToken", accessToken);
-    localStorage.setItem("token", JSON.stringify(refreshToken));
+    localStorage.setItem("token", refreshToken);
     localStorage.setItem("userId", JSON.stringify(userId));
-    return { accessToken, refreshToken, userId, };
+    return { accessToken, refreshToken, userId };
   } catch (error) {
     throw new Error(error);
   }
@@ -49,9 +51,28 @@ const verifyOtp = createAsyncThunk("user/register/verifyOtp", async (data) => {
 const logout = createAsyncThunk("user/logout", async (data) => {
   try {
     const res = await authApi.logout(data);
-    localStorage.removeItem("user");
+    localStorage.removeItem("accessToken");
+    localStorage.removeItem("userId");
     localStorage.removeItem("token");
-    return res;
+    return res.data.message;
+  } catch (error) {
+    throw new Error(error);
+  }
+});
+
+const forgetPassword = createAsyncThunk("user/forgetPassword", async (data) => {
+  try {
+    const res = await authApi.forgetPassword(data);
+    return res.data.message;
+  } catch (error) {
+    throw new Error(error);
+  }
+});
+
+const resetPassword = createAsyncThunk("user/resetPassword", async (data) => {
+  try {
+    const res = await authApi.resetPassword(data);
+    return res.data.message;
   } catch (error) {
     throw new Error(error);
   }
@@ -131,6 +152,33 @@ const authSlice = createSlice({
         state.errorLogout = "error logout";
       }
     });
+    //forgetPassword
+    builder.addCase(forgetPassword.pending, (state) => {
+      state.isLoading = true;
+    });
+    builder.addCase(forgetPassword.fulfilled, (state, payload) => {
+      state.isLoading = false;
+      state.messageSuccessForgetPassword = payload.payload;
+    });
+    builder.addCase(forgetPassword.rejected, (state, action) => {
+      state.isLoading = false;
+      console.log(action);
+      if (action.error.message) {
+        state.errorForgetPassword = "Email not exist!";
+      }
+    });
+    //resetPassword
+    builder.addCase(resetPassword.pending, (state) => {
+      state.isLoading = true;
+    });
+    builder.addCase(resetPassword.fulfilled, (state, payload) => {
+      state.isLoading = false;
+    });
+    builder.addCase(resetPassword.rejected, (state, payload) => {
+      state.isLoading = false;
+      console.log(payload);
+      state.errorForgetPassword = payload.payload;
+    });
   },
 });
 
@@ -142,5 +190,7 @@ export const AuthAction = {
   register,
   verifyOtp,
   logout,
+  forgetPassword,
+  resetPassword,
 };
 export default authSlice.reducer;
