@@ -5,6 +5,7 @@ import cart from "./cart/index";
 import search from "./search/index";
 import category from "./category/index";
 import checkout from "./checkout";
+import blog from "./blog";
 const reducer = {
   auth,
   product,
@@ -12,6 +13,7 @@ const reducer = {
   search,
   category,
   checkout,
+  blog,
 };
 
 export const store = configureStore({

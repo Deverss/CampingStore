@@ -76,7 +76,6 @@ const Menu = ({ value, onChange }) => {
   const handleClick = (id) => {
     onChange(false);
     setVisibleSubMenu(false);
-    dispatch(categoryAction.getProductOfCategory(id));
   };
   const handleLogout = () => {
     const refreshToken = localStorage.getItem("token");
@@ -143,9 +142,9 @@ const Menu = ({ value, onChange }) => {
                       {categories.map((s, a) => (
                         <Link
                           className={styles.submenu_link}
-                          to={`/category/${s.TITLE}`}
+                          to={`/category/${s.TITLE}/${s.id}`}
                           key={a}
-                          onClick={() => handleClick(s.id)}
+                          onClick={() => handleClick()}
                         >
                           {s?.TITLE}
                         </Link>

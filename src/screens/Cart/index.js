@@ -74,7 +74,7 @@ function Cart() {
           <div className={styles.row}>
             <div className={styles.col}>
               <div className={styles.list}>
-                <Items items={items} handlerItems={handlerItems} />
+                <Items items={products} handlerItems={handlerItems} />
               </div>
             </div>
             <div className={styles.col}>

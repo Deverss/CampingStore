@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
 import cn from "classnames";
-import $ from "jquery";
 import Breadcrumbs from "../../components/Breadcrumbs";
-import Basket from "../../components/Basket";
+import CheckoutMyCart from "../../components/CheckoutMyCart";
 import TextInput from "../../components/TextInput";
 import Checkbox from "../../components/Checkbox";
 import styles from "./Checkout.module.sass";
+import $ from "jquery"; // Fix the import statement
 import { useDispatch, useSelector } from "react-redux";
 import { checkoutAction } from "../../redux/checkout";
 const breadcrumbs = [
@@ -25,46 +25,53 @@ const breadcrumbs = [
     title: "Checkout",
   },
 ];
-
+// Define available vouchers
+const availableVouchers = [
+  { code: "DISCOUNT10", discount: 10 },
+  { code: "DISCOUNT10", discount: 10 },
+  { code: "DISCOUNT10", discount: 10 },
+  { code: "DISCOUNT10", discount: 10 },
+  { code: "DISCOUNT10", discount: 10 },
+  { code: "DISCOUNT10", discount: 10 },
+  { code: "DISCOUNT10", discount: 10 },
+  { code: "DISCOUNT10", discount: 10 },
+  { code: "DISCOUNT20", discount: 20 },
+  // Add more vouchers as needed
+];
 function Checkout() {
   const [counter, setCounter] = useState(0);
-  const [shipping, setShipping] = useState(true);
-  const [payment, setPayment] = useState(true);
-
+  const [selectedVoucher, setSelectedVoucher] = useState(null); // New state for selected voucher
   const container = useRef();
   const steps = useRef();
-  const checkoutBox = useRef();
-  const groupPayments = useRef();
   const dispatch = useDispatch();
-  const money = 2000;
-  const onCheckout = () => {
-    const res = dispatch(checkoutAction.checkout({ money: money }));
-    res.then((res) => {
-      console.log("res", res);
-    });
-  };
   const { products } = useSelector((state) => state.cart);
   const [basketItems, setBasketItems] = useState(products);
+
   useEffect(() => {
     setBasketItems(products);
   }, [products]);
+
   useEffect(() => {
     $(steps.current.children).eq(counter).addClass(styles.active);
     $(container.current.children).hide().eq(counter).fadeIn();
   }, [counter]);
 
-  const nextItem = () => setCounter((prev) => (prev < 3 ? ++prev : prev));
+  const nextItem = () => setCounter((prev) => (prev < 2 ? ++prev : prev));
+  const goBack = () => setCounter((prev) => (prev > 0 ? --prev : prev));
 
-  const dropDown = (a) => {
-    $(checkoutBox.current).slideToggle();
-    setShipping(!shipping);
+  const handleShippingSubmit = () => {
+    // Your logic to handle shipping details submission
+    alert("Order placed successfully!");
   };
 
-  useEffect(() => {
-    $(groupPayments.current.children).hide().closest(".visible").fadeIn();
-  }, [payment]);
+  const handleVoucherBack = () => {
+    goBack();
+  };
 
-  const changePayment = () => setPayment(!payment);
+  const handleVoucherSelect = (voucher) => {
+    // Set the selected voucher
+    setSelectedVoucher(voucher);
+  };
 
   return (
     <div>
@@ -78,98 +85,16 @@ function Checkout() {
               <div className={styles.steps} ref={steps}>
                 <div className={styles.step}>1</div>
                 <div className={styles.step}>2</div>
-                <div className={styles.step}>3</div>
-                <div className={styles.step}>4</div>
               </div>
               <div className={styles.container} ref={container}>
                 <div className={styles.item}>
-                  <div className={styles.category}>Details</div>
-                  <div className={styles.fieldset}>
-                    <TextInput
-                      className={styles.field}
-                      label="Email Address"
-                      type="email"
-                      name="email"
-                    />
-                    <TextInput
-                      className={styles.field}
-                      label="Password"
-                      type="password"
-                      name="password"
-                    />
-                  </div>
-                  <button
-                    className={cn(
-                      "button button-green button-wide",
-                      styles.button
-                    )}
-                    onClick={nextItem}
-                  >
-                    Continue
-                  </button>
-                  <button
-                    className={cn(
-                      "button button-border button-wide",
-                      styles.button
-                    )}
-                    onClick={nextItem}
-                  >
-                    Guest Checkout
-                  </button>
-                </div>
-
-                <div className={styles.item}>
                   <div className={styles.category}>Shipping Details</div>
-                  <div className={styles.fieldset}>
-                    <TextInput
-                      className={styles.field}
-                      label="Full Name"
-                      type="text"
-                      name="name"
-                    />
-                    <TextInput
-                      className={styles.field}
-                      label="Street Name"
-                      type="text"
-                      name="street"
-                    />
-                    <div className={styles.line}>
-                      <div className={styles.cell}>
-                        <TextInput
-                          className={styles.field}
-                          label="House Number"
-                          type="text"
-                          name="house"
-                        />
-                      </div>
-                      <div className={styles.cell}>
-                        <TextInput
-                          className={styles.field}
-                          label="City"
-                          type="text"
-                          name="city"
-                        />
-                      </div>
-                    </div>
-                    <div className={styles.line}>
-                      <div className={styles.cell}>
-                        <TextInput
-                          className={styles.field}
-                          label="Country"
-                          type="text"
-                          name="country"
-                        />
-                      </div>
-                      <div className={styles.cell}>
-                        <TextInput
-                          className={styles.field}
-                          label="ZIP Code"
-                          type="text"
-                          name="code"
-                        />
-                      </div>
-                    </div>
-                  </div>
+                  <TextInput
+                    className={styles.field}
+                    label="Full Name"
+                    type="text"
+                    name="name"
+                  />
                   <button
                     className={cn(
                       "button button-green button-wide",
@@ -179,67 +104,38 @@ function Checkout() {
                   >
                     Continue
                   </button>
+                  <button
+                    className={cn(
+                      "button button-green button-wide",
+                      styles.button
+                    )}
+                    onClick={handleShippingSubmit}
+                  >
+                    Submit
+                  </button>
                 </div>
 
                 <div className={styles.item}>
-                  <div className={styles.category}>Billing Details</div>
-                  <div className={styles.fieldset}>
-                    <Checkbox
-                      label="Same as shipping address"
-                      type="checkbox"
-                      value={shipping}
-                      onChange={dropDown}
-                    />
-
-                    <div className={styles.checkoutBox} ref={checkoutBox}>
-                      <TextInput
-                        className={styles.field}
-                        label="Full Name"
-                        type="text"
-                        name="name"
-                      />
-                      <TextInput
-                        className={styles.field}
-                        label="Street Name"
-                        type="text"
-                        name="street"
-                      />
-                      <div className={styles.line}>
-                        <div className={styles.cell}>
-                          <TextInput
-                            className={styles.field}
-                            label="House Number"
-                            type="text"
-                            name="house"
-                          />
-                        </div>
-                        <div className={styles.cell}>
-                          <TextInput
-                            className={styles.field}
-                            label="City"
-                            type="text"
-                            name="city"
-                          />
-                        </div>
-                      </div>
-                      <div className={styles.line}>
-                        <div className={styles.cell}>
-                          <TextInput
-                            className={styles.field}
-                            label="Country"
-                            type="text"
-                            name="country"
-                          />
-                        </div>
-                        <div className={styles.cell}>
-                          <TextInput
-                            className={styles.field}
-                            label="ZIP Code"
-                            type="text"
-                            name="code"
-                          />
-                        </div>
-                      </div>
+                  <div className={styles.category}>Voucher Section</div>
+                  <div className={styles.voucherContainer}>
+                    <p>Available Vouchers:</p>
+                    <div className={styles.voucherList}>
+                      {availableVouchers.map((voucher) => (
+                        <button
+                          key={voucher.code}
+                          className={cn(
+                            "button button-green button-wide",
+                            styles.button,
+                            {
+                              [styles.selected]: selectedVoucher === voucher,
+                            }
+                          )}
+                          onClick={() => handleVoucherSelect(voucher)}
+                        >
+                          <p>{voucher.code}</p>
+                          <p>Discount: {voucher.discount}%</p>
+                        </button>
+                      ))}
                     </div>
                   </div>
                   <button
@@ -247,106 +143,33 @@ function Checkout() {
                       "button button-green button-wide",
                       styles.button
                     )}
-                    onClick={nextItem}
+                    onClick={handleVoucherBack}
                   >
-                    Continue
+                    Go Back
                   </button>
                 </div>
 
                 <div className={styles.item}>
-                  <div className={styles.category}>Payment Details</div>
-
-                  <div className={styles.variants}>
-                    <Checkbox
-                      className={styles.checkbox}
-                      label="Credit Card"
-                      type="radio"
-                      name="payment"
-                      value={payment}
-                      onChange={changePayment}
-                    />
-                    <Checkbox
-                      className={styles.checkbox}
-                      label="Paypal"
-                      type="radio"
-                      name="payment"
-                      value={!payment}
-                      onChange={changePayment}
-                    />
-                  </div>
-
-                  <div className={styles.group} ref={groupPayments}>
-                    <div className={cn({ visible: payment }, styles.item)}>
-                      <div className={styles.fieldset}>
-                        <TextInput
-                          className={styles.field}
-                          label="Card Number"
-                          type="tel"
-                          name="card"
-                        />
-                        <div className={styles.line}>
-                          <div className={styles.cell}>
-                            <TextInput
-                              className={styles.field}
-                              label="Expiry Date"
-                              type="text"
-                              name="date"
-                            />
-                          </div>
-                          <div className={styles.cell}>
-                            <TextInput
-                              className={styles.field}
-                              label="CVV"
-                              type="tel"
-                              name="cvv"
-                            />
-                          </div>
-                        </div>
-                        <div className={styles.line}>
-                          <div className={styles.cell}>
-                            <TextInput
-                              className={styles.field}
-                              label="Country"
-                              type="text"
-                              name="country"
-                            />
-                          </div>
-                          <div className={styles.cell}>
-                            <TextInput
-                              className={styles.field}
-                              label="ZIP Code"
-                              type="tel"
-                              name="code"
-                            />
-                          </div>
-                        </div>
-                      </div>
-                      <button
-                        className={cn(
-                          "button button-green button-wide",
-                          styles.button
-                        )}
-                      >
-                        Place Order
-                      </button>
-                    </div>
-                    <div className={cn({ visible: !payment }, styles.item)}>
-                      <button
-                        className={cn(
-                          "button button-green button-wide",
-                          styles.button
-                        )}
-                        onClick={() => onCheckout()}
-                      >
-                        Continue with PayPal
-                      </button>
-                    </div>
-                  </div>
+                  <div className={styles.category}>Discount Details</div>
+                  <p>Discount applied successfully!</p>
+                  <button
+                    className={cn(
+                      "button button-green button-wide",
+                      styles.button
+                    )}
+                    onClick={goBack}
+                  >
+                    Go Back
+                  </button>
                 </div>
               </div>
             </div>
             <div className={styles.col}>
-              <Basket value={basketItems} setValue={setBasketItems} checkout />
+              <CheckoutMyCart
+                value={basketItems}
+                setValue={setBasketItems}
+                checkout
+              />
             </div>
           </div>
         </div>

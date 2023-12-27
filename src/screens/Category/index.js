@@ -7,6 +7,8 @@ import DropdownMultiple from "../../components/DropdownMultiple";
 import ProductItem from "../../components/ProductItem";
 import Newsletter from "../../components/Newsletter";
 import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
+import { categoryAction } from "../../redux/category";
 const breadcrumbs = [
   {
     title: "Home Page",
@@ -17,7 +19,7 @@ const breadcrumbs = [
     url: "/category",
   },
   {
-    title: "Eye Care",
+    title: "category",
   },
 ];
 
@@ -31,9 +33,16 @@ function Category() {
   const [price, setPrice] = useState([]);
   const [tags, setTags] = useState([]);
   const dispatch = useDispatch();
+  const { id } = useParams();
   useEffect(() => {
     setTags([...color, ...category, ...price]);
   }, [color, category, price]);
+  useEffect(() => {
+    const getProductFromCategory = async () => {
+      dispatch(categoryAction.getProductOfCategory(id));
+    };
+    getProductFromCategory();
+  }, [id]);
   const { products } = useSelector((state) => state.category);
   return (
     <>
