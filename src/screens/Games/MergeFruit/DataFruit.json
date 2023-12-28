@@ -1,0 +1,62 @@
+[
+    {
+        "name": "blueberry",
+        "level": 0,
+        "size": 20
+    },
+    {
+        "name": "strawberry",
+        "level": 1,
+        "size": 30
+    },
+    {
+        "name": "grapes",
+        "level": 2,
+        "size": 40
+    },
+    {
+        "name": "lemon",
+        "level": 3,
+        "size": 40
+    },
+    {
+        "name": "coconut",
+        "level": 4,
+        "size": 50
+    },
+    {
+        "name": "apple",
+        "level": 5,
+        "size": 60
+    },
+    {
+        "name": "orange",
+        "level": 6,
+        "size": 70
+    },
+    {
+        "name": "pomegranate",
+        "level": 7,
+        "size": 80
+    },
+    {
+        "name": "peach",
+        "level": 8,
+        "size": 90
+    },
+    {
+        "name": "pineapple",
+        "level": 9,
+        "size": 100
+    },
+    {
+        "name": "melon",
+        "level": 10,
+        "size": 110
+    },
+    {
+        "name": "watermelon",
+        "level": 11,
+        "size": 130
+    }
+]

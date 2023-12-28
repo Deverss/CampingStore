@@ -1,6 +1,6 @@
 import React from 'react';
 import Breadcrumbs from "../../../components/Breadcrumbs";
-import Nhau from "./nhau.js";
+import Merge from "./merge.js";
 
 
 const breadcrumbs = [
@@ -13,12 +13,12 @@ const breadcrumbs = [
     url: "/games",
   },
   {
-    title: "Nhau Dau Nhau Day",
-    url: "/games/nhau_dau_nhau_day"
+    title: "Merge Fruit",
+    url: "/games/merge_fruit",
   }
 ];
 
-function NhauDauNhauDay() {
+function MergeFruit() {
   
 
   return (
@@ -26,9 +26,9 @@ function NhauDauNhauDay() {
       <div>
         <Breadcrumbs value={breadcrumbs} />
       </div>
-      <Nhau />
+      <Merge />
     </>
   );
 }
 
-export default NhauDauNhauDay;
+export default MergeFruit;

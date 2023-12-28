@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import cn from "classnames";
 import Breadcrumbs from "../../components/Breadcrumbs";
 import styles from "./PostDetail.module.sass";

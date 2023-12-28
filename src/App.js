@@ -20,6 +20,10 @@ import Sitemap from "./screens/Sitemap";
 import CheckOtp from "./screens/CheckOtp";
 import BlogPage from "./screens/Blog";
 import PostDetail from "./screens/PostDetail";
+import NhauDauNhauDay from "./screens/Games/NhauDauNhauDay";
+import MergeFruit from "./screens/Games/MergeFruit";
+import GiaiMa from "./screens/Games/GiaiMa";
+import Header from "./components/Header";
 
 function App() {
   return (
@@ -186,6 +190,40 @@ function App() {
               <Games />
             </Page>
           )}>
+        </Route>
+        <Route
+          exact
+          path="/games/nhau_dau_nhau_day"
+          render={() => (
+            <>
+              <Header />
+              <NhauDauNhauDay />
+            </>
+          )}
+        >
+        </Route>
+        <Route
+          exact 
+          path="/games/merge_fruit"
+          render={() => (
+            <>
+              <Header />
+              <MergeFruit />
+            </>
+          )}
+        >
+
+        </Route>
+        <Route
+          exact 
+          path="/games/giai_ma"
+          render={() => (
+            <>
+              <Header />
+              <GiaiMa />
+            </>
+          )}
+        >
 
         </Route>
         <Route
